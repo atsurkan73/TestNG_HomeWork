@@ -44,11 +44,7 @@ public class RozetkaAsserrtNG {
 
         wait.until(visibilityOfElementLocated(titleOfFirstItemXpath));
 
-//        WebElement titleOfFirstItem = wait.until(visibilityOfElementLocated(titleOfFirstItemXpath));
-
         WebElement titleOfFirstItem = driver.findElement(titleOfFirstItemXpath);
-
-//        titleOfFirstItem.click();
 
         String titleFirstItemText = titleOfFirstItem.getText();
 
