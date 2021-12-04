@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 import static org.testng.Assert.assertEquals;
 
-public class RozetkaAssertNG {
+public class Homework16_TestRozetkaTitleOfSearchPage_AND_ExplicitWait {
     WebDriver driver;
     WebDriverWait wait;
 
