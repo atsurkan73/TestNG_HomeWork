@@ -20,7 +20,6 @@ public class Homework17_TestRozetkaSearchPageCountProduct {
     WebDriver driver;
     WebDriverWait wait;
     FileWriter fileWriter;
-    FileWriter fileWriter1;
 
     @BeforeMethod
     public void before() throws IOException {
