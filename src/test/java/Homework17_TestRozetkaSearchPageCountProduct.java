@@ -30,7 +30,6 @@ public class Homework17_TestRozetkaSearchPageCountProduct {
         driver.manage().window().maximize();
         driver.get("https://rozetka.com.ua/");
         fileWriter = new FileWriter("src/test/rozetkaTest.txt");
-        fileWriter1 = new FileWriter("src/test/rozetkaTest1.txt");
     }
 
     @Test
@@ -50,28 +49,18 @@ public class Homework17_TestRozetkaSearchPageCountProduct {
 
         assertEquals(countOfGoods, 60);
 
+        Map<Integer, String> mapTitleOfGoogs = new HashMap<>();               // create map
+        Integer index = 0;
+
         for (WebElement element : titleOfGoogs) {
-            System.out.println(element.getText());
+            String elementText = element.getText();
+            System.out.println(elementText);
+            mapTitleOfGoogs.put(index, titleOfGoogs.get(index++).getText()); // fill out the map
         }
 
-        Map<WebElement, String> mapTitleOfGoogs = new HashMap<>(); // create map with key = WebElement
-        for (WebElement element : titleOfGoogs) {
-            mapTitleOfGoogs.put(element, element.getText());
-        }
-
-        for (Map.Entry<WebElement, String> entry : mapTitleOfGoogs.entrySet())
-            fileWriter.write(entry.getValue() + '\n');
+        for (Map.Entry<Integer, String> entry : mapTitleOfGoogs.entrySet())
+            fileWriter.write(entry.getValue() + '\n');                   // write titleOfGoogs entries to file
         fileWriter.close();
-
-        Map<Integer, String> mapTitleOfGoogs1 = new HashMap<>();  // create map1 with key = index
-        Integer index = 1;
-        for (int i = 0; i < titleOfGoogs.size(); i++) {
-            mapTitleOfGoogs1.put(index++, titleOfGoogs.get(i).getText());
-        }
-
-        for (Map.Entry<Integer, String> entry : mapTitleOfGoogs1.entrySet())
-            fileWriter1.write(entry.getKey() + " " + entry.getValue() + '\n');
-        fileWriter1.close();
     }
 
     @AfterTest
