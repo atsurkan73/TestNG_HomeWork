@@ -55,14 +55,12 @@ public class Homework17_TestRozetkaSearchPageCountProduct {
 
         for (WebElement element : titleOfGoogs) {
             String elementText = element.getText();
-            System.out.println(elementText);
+            System.out.println(elementText);                                               // print titleOfGoogs list on the screen
             mapTitleAndPriceOfGoogs.put(titleOfGoogs.get(index).getText(), priceOfGoogs.get(index++).getText()); // fill out the map
         }
 
-        System.out.println(mapTitleAndPriceOfGoogs);
-
         for (Map.Entry<String, String> entry : mapTitleAndPriceOfGoogs.entrySet())
-            fileWriter.write(entry.getKey() + " - " + entry.getValue() + '\n');                   // write titleOfGoogs entries to file
+            fileWriter.write(entry.getKey() + " - " + entry.getValue() + '\n');        // write titleOfGoogs entries to file
         fileWriter.close();
     }
 
