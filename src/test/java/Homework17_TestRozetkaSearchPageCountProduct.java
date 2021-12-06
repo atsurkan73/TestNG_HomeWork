@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,22 +43,26 @@ public class Homework17_TestRozetkaSearchPageCountProduct {
         laptopCategory.click();
 
         wait.until(visibilityOfElementLocated(By.xpath("//span[@class='goods-tile__title']")));
-        List<WebElement> titleOfGoogs = driver.findElements(By.xpath("//span[@class='goods-tile__title']"));
+        List<WebElement> titleOfGoogs = driver.findElements(By.xpath("//span[@class='goods-tile__title']")); // List of titleOfGoogs entries
+        List<WebElement> priceOfGoogs = driver.findElements(By.xpath("//span[@class=\"goods-tile__price-value\"]")); // List of priceOfGoogs entries
+
         int countOfGoods = titleOfGoogs.size();
 
         assertEquals(countOfGoods, 60);
 
-        Map<Integer, String> mapTitleOfGoogs = new HashMap<>();               // create map
-        Integer index = 0;
+        Map<String, String> mapTitleAndPriceOfGoogs = new LinkedHashMap<>();               // create map
+        int index = 0;
 
         for (WebElement element : titleOfGoogs) {
             String elementText = element.getText();
             System.out.println(elementText);
-            mapTitleOfGoogs.put(index, titleOfGoogs.get(index++).getText()); // fill out the map
+            mapTitleAndPriceOfGoogs.put(titleOfGoogs.get(index).getText(), priceOfGoogs.get(index++).getText()); // fill out the map
         }
 
-        for (Map.Entry<Integer, String> entry : mapTitleOfGoogs.entrySet())
-            fileWriter.write(entry.getValue() + '\n');                   // write titleOfGoogs entries to file
+        System.out.println(mapTitleAndPriceOfGoogs);
+
+        for (Map.Entry<String, String> entry : mapTitleAndPriceOfGoogs.entrySet())
+            fileWriter.write(entry.getKey() + " - " + entry.getValue() + '\n');                   // write titleOfGoogs entries to file
         fileWriter.close();
     }
 
