@@ -52,7 +52,7 @@ public class Homework18_TestRozetkaCheckSaleProductProverkaDlyaLehi {
 
         wait.until(elementToBeClickable(saleBlockGoodsXpath));
 
-        String priceOfGoodsInSaleBlockText = priceOfGoodsInSaleBlock.get(i).getText().trim();
+        String priceOfGoodsInSaleBlockText = priceOfGoodsInSaleBlock.get(numOfElement).getText().trim();
 
         saleBlockGoods.get(numOfElement).click();
 
