@@ -61,12 +61,13 @@ public class Homework17_TestRozetkaSearchPageCountProduct {
 
         for (Map.Entry<String, String> entry : mapTitleAndPriceOfGoogs.entrySet())
             fileWriter.write(entry.getKey() + " - " + entry.getValue() + '\n');        // write titleOfGoogs entries to file
-        fileWriter.close();
+
     }
 
     @AfterTest
-    public void after() {
+    public void after() throws IOException {
         driver.quit();
+        fileWriter.close();
     }
 }
 
