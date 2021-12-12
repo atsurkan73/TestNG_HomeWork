@@ -7,9 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.util.List;
-
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 
