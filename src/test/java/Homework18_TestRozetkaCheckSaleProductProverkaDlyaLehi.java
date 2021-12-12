@@ -8,7 +8,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -35,15 +34,14 @@ public class Homework18_TestRozetkaCheckSaleProductProverkaDlyaLehi {
     }
 
     @Test
-    public void FirstTest() throws IOException, InterruptedException {
-        List<WebElement> saleBlockGoods = driver.findElements(saleBlockGoodsXpath);
-
-        for (int i = 0; i < saleBlockGoods.size(); i++) {
+    public void FirstTest() {
+        int numOfElementsInBlock = 6;
+        for (int i = 0; i < numOfElementsInBlock; i++) {
             proverkaDlyaLehi(i);
         }
     }
 
-    public void proverkaDlyaLehi(int i) {
+    public void proverkaDlyaLehi(int numOfElement) {
         wait.until(presenceOfAllElementsLocatedBy(saleBlockGoodsXpath));
         wait.until(presenceOfAllElementsLocatedBy(priceOfGoodsInSaleBlockXpath));
 
@@ -58,7 +56,7 @@ public class Homework18_TestRozetkaCheckSaleProductProverkaDlyaLehi {
 
         String priceOfGoodsInSaleBlockText = priceOfGoodsInSaleBlock.get(i).getText().trim();
 
-        saleBlockGoods.get(i).click();
+        saleBlockGoods.get(numOfElement).click();
 
         wait.until(presenceOfElementLocated(priceOfGoodOnProductPageXpath));
 
@@ -68,8 +66,8 @@ public class Homework18_TestRozetkaCheckSaleProductProverkaDlyaLehi {
         priceOfGoodOnProductPageText = priceOfGoodOnProductPageText.substring(0, priceOfGoodOnProductPageText.length() - 1);
 
         System.out.println("========================================");
-        System.out.println("priceOfGoodOnProductPageText [" + i + "] " + priceOfGoodOnProductPageText);
-        System.out.println("priceOfGoodInSaleBlockText [" + i + "] " + priceOfGoodsInSaleBlockText);
+        System.out.println("priceOfGoodOnProductPageText [" + numOfElement + "] " + priceOfGoodOnProductPageText);
+        System.out.println("priceOfGoodInSaleBlockText [" + numOfElement + "] " + priceOfGoodsInSaleBlockText);
 
         Assert.assertEquals(priceOfGoodOnProductPageText, priceOfGoodsInSaleBlockText);
 
